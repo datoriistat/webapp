@@ -1,0 +1,120 @@
+<#import "../layout/defaultLayout.ftl.html" as layout>
+    <@layout.myLayout "Detalii firmă - ${name} - ${cif}">
+
+    <h2>
+        ${name}
+    </h2>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Informații generale</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-responsive table-striped">
+                <tr>
+                    <td>CIF</td>
+                    <td>${cif}</td>
+                </tr>
+                <tr>
+                    <td>Cod fiscal</td>
+                    <td>${cod}</td>
+                </tr>
+                <tr>
+                    <td>Stări</td>
+                    <td>
+                        <#list stari as stare>
+                            <p>- ${stare}</p>
+                        </#list>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Județ</td>
+                    <td>${judet}</td>
+                </tr>
+                <tr>
+                    <td>Localitate</td>
+                    <td>${localitate}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <#if datorii??>
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h3 class="panel-title">Datorii</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-responsive table-striped">
+                    <thead>
+                    <tr>
+                        <th>Denumire</th>
+                        <th class="value">Valoare</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>Obligatii principale la bugetul de stat</td>
+                        <td class="value">${datorii.opStat}</td>
+                    </tr>
+                    <tr>
+                        <td>Obligații accesorii la bugetul de stat</td>
+                        <td class="value">${datorii.oaStat}</td>
+                    </tr>
+                    <tr>
+                        <td>Obligații contestate la bugetul de stat</td>
+                        <td class="value">${datorii.ocStat}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Obligații principale la bugetul asigurărilor sociale</td>
+                        <td class="value">${datorii.opSocial}</td>
+                    </tr>
+                    <tr>
+                        <td>Obligații accesorii la bugetul asigurărilor sociale</td>
+                        <td class="value">${datorii.oaSocial}</td>
+                    </tr>
+                    <tr>
+                        <td>Obligații contesate la bugetul asigurărilor sociale</td>
+                        <td class="value">${datorii.ocSocial}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Obligații principale la bugetul asigurărilor de șomaj</td>
+                        <td class="value">${datorii.opSomaj}</td>
+                    </tr>
+                    <tr>
+                        <td>Obligații accesorii la bugetul asigurărilor de șomaj</td>
+                        <td class="value">${datorii.oaSomaj}</td>
+                    </tr>
+                    <tr>
+                        <td>Obligații contestate la bugetul asigurărilor de șomaj</td>
+                        <td class="value">${datorii.ocSomaj}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Obligații principale la bugetul de sănătate</td>
+                        <td class="value">${datorii.opSanatate}</td>
+                    </tr>
+                    <tr>
+                        <td>Obligații accesorii la bugetul de sănătate</td>
+                        <td class="value">${datorii.oaSanatate}</td>
+                    </tr>
+                    <tr>
+                        <td>Obligații contestate la bugetul de sănătate</td>
+                        <td class="value">${datorii.ocSanatate}</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Total (exclude contestații)</strong></td>
+                        <td class="value"><strong>${datorii.total}</strong></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </#if>
+
+
+</@layout.myLayout>

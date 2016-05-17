@@ -1,0 +1,85 @@
+<#import "../layout/defaultLayout.ftl.html" as layout>
+    <@layout.myLayout "Datorii stat">
+
+    <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Denumire', 'Număr'],
+                ['Firme cu datorii', ${totals.totalCompaniesWithDebt}],
+                ['Firme fără datorii', ${totals.totalCompaniesWithoutDebt}],
+            ]);
+
+            var options = {
+                title: 'Sumar număr firme'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
+    <h3>Datoriile către bugetul de stat</h3>
+
+    <p>
+        144.829 de contribuabili mici şi instituţii publice, cu restanţe mai mari de 10.000 lei la 31.03.2016,
+        înregistrează obligaţii fiscale totale de 77,11 miliarde de lei, din care 19% (14,65 miliarde de lei) sunt
+        arierate recuperabile, iar 81% (62,46 miliarde de lei) reprezintă arierate nerecuperabile.
+    </p>
+
+    <p>
+        În categoria arierate nerecuperabile se înscriu obligațiile fiscale pentru care diferite constrângeri legale
+        opresc ANAF de la inițierea sau continuarea măsurilor de executare silită. Din aceasta categorie fac parte:
+    </p>
+
+    <ul>
+        <li>
+            obligațiile fiscale ale contribuabililor pentru care s-a dispus deschiderea procedurii insolvenţei (Legea
+            nr. 85/2014 privind procedurile de prevenire a insolvenţei şi de insolvenţă, cu modificările și completările
+            ulterioare);
+        </li>
+        <li>
+            obligațiile fiscale ale contribuabililor pentru care s-a instituit administrarea specială;
+        </li>
+        <li>
+            obligațiile fiscale ale contribuabililor pentru care executarea silită este suspendată conform prevederilor
+            Legii nr. 207/2015 privind Codul de procedură fiscală, cu modificările și completările ulterioare;
+        </li>
+        <li>
+            obligatiile fiscale ale contribuabililor pentru care s-a declarat starea de insolvabilitate fără venituri
+            sau bunuri urmăribile, conform Legii nr. 207/2015 privind Codul de procedură fiscală, cu modificările şi
+            completările ulterioare.
+        </li>
+    </ul>
+
+    <p>
+        Denumirile contribuabililor sunt preluate direct din evidentele Oficiului Național al Registrului Comertului sau
+        din documentele oficiale de înființare ale acestora, așa cum au fost declarate de debitori).
+    </p>
+
+    <p>
+        Sunt exceptate de la publicare obligaţiile fiscale pentru care s-au acordat şi sunt în derulare înlesniri la
+        plată, cele a căror executare este suspendată și cele care au termene de plată stabilite în planul de
+        reorganizare judiciară.
+    </p>
+
+    <p>
+        De asemenea, sunt exceptați de la publicare contribuabilii ale căror obligații fiscale restante înscrise în
+        certificatul de atestare fiscală sunt mai mici sau egale cu suma de rambursat/restituit.
+    </p>
+
+    <p>
+        Începând cu anul 2016, contribuabilii mari și mijlocii aflaţi în insolvenţă au fost reîncadrați în categoria
+        micilor contribuabili.
+    </p>
+
+    <div id="piechart" style="width: 98%; height: 500px;"></div>
+
+
+</@layout.myLayout>

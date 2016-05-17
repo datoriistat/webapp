@@ -1,0 +1,32 @@
+<#import "../layout/defaultLayout.ftl.html" as layout>
+    <@layout.myLayout "Top 1000 firme datoare la stat">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Top 1000 firme datoare la stat</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-responsive table-striped">
+                <thead>
+                <tr>
+                    <td><strong>CIF</strong></td>
+                    <td><strong>Denumire</strong></td>
+                    <td class="value"><strong>Valoare</strong></td>
+                </tr>
+                </thead>
+                <tbody>
+                <#list topCompanies as company>
+                    <tr>
+                        <td><a href="/info/${company.cif}" target="_blank">${company.cif}</a></td>
+                        <td>${company.name}</td>
+                        <td class="value">${company.valueStr}</td>
+                    </tr>
+                </#list>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</@layout.myLayout>
